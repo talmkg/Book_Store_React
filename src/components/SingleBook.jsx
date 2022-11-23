@@ -1,29 +1,33 @@
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { Component } from "react";
 import fantasy from "../Assets/fantasy.json";
+import { Badge } from "react-bootstrap";
 
 class SingleBook extends Component {
   render() {
     return (
-      <Col xs={4} md={4} className="text-center">
-        {fantasy.map((book) => (
-          <Card style={{ width: "18rem" }} key={book.id}>
-            <img
-              className="d-block w-100 ratio"
-              src={book.img}
-              alt={book.title}
-            />
-            <Card.Body className="caption">
-              <div>
-                <div className="card text-dark">
-                  <h3 className="text-truncate">{book.title}</h3>
-                  <p>{book.price}$</p>
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
-        ))}
-      </Col>
+      <>
+        <Row className="row" xs={1} md={3}>
+          {fantasy.map((book) => (
+            <Col className="mb-3 mt-2">
+              <Card key={book.asin}>
+                <Card.Img variant="top" className="ratio" src={book.img} />
+                <Card.Body>
+                  <Card.Title className="text-truncate">
+                    {book.title}
+                  </Card.Title>
+
+                  <div className="d-flex justify-content-center">
+                    <Badge variant="success p-2">
+                      Buy only for {book.price}$
+                    </Badge>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </>
     );
   }
 }
