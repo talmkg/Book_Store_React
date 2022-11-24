@@ -13,7 +13,6 @@ function App() {
           src="https://kit.fontawesome.com/8539ff3369.js"
           crossorigin="anonymous"
         ></script>
-        ;
       </div>
       <div className="mt-4 mb-4">
         <div className="container rounded bg-dark " id="main">
