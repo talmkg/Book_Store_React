@@ -1,31 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 :root,
 #container-fluid {
   background-image: url(https://images5.alphacoders.com/110/1107810.jpg);
@@ -35,4 +7,38 @@
 .ratio {
   aspect-ratio: 3/4;
   object-fit: cover;
+}
+#alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #464649;
+  font-weight: 500;
+  width: 100%;
+}
+.badge {
+  cursor: pointer;
+}
+#nav-item {
+  font-weight: 600;
+  transition: 0.2s;
+}
+#nav-item:hover {
+  color: rgb(208, 21, 255) !important;
+  transition: 0.2s;
+}
+#custom_background {
+  background-color: rgba(255, 255, 255, 0.74) !important;
+}
+#main {
+  min-height: 75vh;
+}
+#profile {
+  background-color: rgb(208, 21, 255) !important;
+  border: none;
+  padding: 0.6rem;
+  box-shadow: 0px 5px 20px rgb(208, 21, 255);
+}
+#violet {
+  color: rgb(208, 21, 255);
 }

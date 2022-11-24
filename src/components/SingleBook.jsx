@@ -1,4 +1,4 @@
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row, Button } from "react-bootstrap";
 import { Component } from "react";
 import fantasy from "../Assets/fantasy.json";
 import { Badge } from "react-bootstrap";
@@ -9,6 +9,7 @@ class SingleBook extends Component {
   state = {
     searchQuery: "",
   };
+
   render() {
     return (
       <>
@@ -35,15 +36,23 @@ class SingleBook extends Component {
             )
             .map((book) => (
               <Col className="mb-3 mt-2">
-                <Card key={book.asin}>
-                  <Card.Img variant="top" className="ratio" src={book.img} />
+                <Card id="custom_background" key={book.asin}>
+                  <Card.Img
+                    variant="top"
+                    className="ratio p-1"
+                    src={book.img}
+                  />
                   <Card.Body>
                     <Card.Title className="text-truncate">
                       {book.title}
                     </Card.Title>
 
                     <div className="d-flex justify-content-center">
-                      <Badge variant="success p-2">
+                      <Badge
+                        variant="success p-2"
+                        class="badge"
+                        onclick="selected_item()"
+                      >
                         Buy only for {book.price}$
                       </Badge>
                     </div>
