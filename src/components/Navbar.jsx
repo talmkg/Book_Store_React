@@ -6,15 +6,17 @@ function navbar() {
       <Navbar bg="dark">
         <Container className="d-flex">
           <Navbar.Brand href="#home" className="d-flex">
-            <h2 className="text-warning">锦筠</h2>
+            <div className="d-flex">
+              <h2 className="text-warning">锦筠</h2>
 
-            <h2 className="text-light font-weight-bold d-flex">
-              &nbsp;YummyBooks
-              <h2 className="font-weight-bold" id="violet">
-                .net
+              <h2 className="text-light font-weight-bold d-flex">
+                &nbsp;YummyBooks
+                <h2 className="font-weight-bold" id="violet">
+                  .net
+                </h2>
               </h2>
-            </h2>
-            <Container className="d-flex justify-content-center ">
+            </div>
+            <Container className="d-flex align-items-center mb-3">
               <div class="collapse navbar-collapse " id="navbarNavDropdown">
                 <ul class="navbar-nav ">
                   <li class="nav-item active">
