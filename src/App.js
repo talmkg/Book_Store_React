@@ -15,8 +15,8 @@ function App() {
 
           <div className="text-light">
             <h5 className="text-center font-italic m-4">
-              “Thanks to Bookshop, there is no reason to buy books on Amazon
-              anymore.” — Inside Hook
+              “Thanks to YummyBooks.net, there is no reason to buy books on
+              Amazon anymore.” — Inside Hook
             </h5>
             <p className=" text-center">
               <strong>
