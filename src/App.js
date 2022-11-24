@@ -1,12 +1,20 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WarningSign from "./components/WarningSign";
-import SingleBook from "./components/SingleBook";
+import BookList from "./components/BookList";
+import fantasy from "../src/Assets/fantasy.json";
 import Navbar from "./components/Navbar";
 import { Container } from "react-bootstrap";
 function App() {
   return (
     <div classname="container-fluid" id="container-fluid">
+      <div>
+        <script
+          src="https://kit.fontawesome.com/8539ff3369.js"
+          crossorigin="anonymous"
+        ></script>
+        ;
+      </div>
       <div className="mt-4 mb-4">
         <div className="container rounded bg-dark " id="main">
           <div>
@@ -39,7 +47,7 @@ function App() {
           </div>
 
           <Container>
-            <SingleBook />
+            <BookList book={fantasy} />
           </Container>
         </div>
       </div>

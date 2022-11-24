@@ -71,7 +71,7 @@ function navbar() {
               </div>
             </Container>
           </Navbar.Brand>
-          <Nav.Item>
+          <Nav.Item className="mb-3">
             <Button variant="info" id="profile">
               Profile
             </Button>

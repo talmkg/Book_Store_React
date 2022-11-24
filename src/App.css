@@ -3,6 +3,7 @@
   background-image: url(https://images5.alphacoders.com/110/1107810.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  z-index: 1;
 }
 .ratio {
   aspect-ratio: 3/4;
@@ -41,4 +42,7 @@
 }
 #violet {
   color: rgb(208, 21, 255);
+}
+#popup {
+  z-index: 2;
 }

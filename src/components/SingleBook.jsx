@@ -1,66 +1,52 @@
-import { Card, Col, Row, Button } from "react-bootstrap";
 import { Component } from "react";
-import fantasy from "../Assets/fantasy.json";
-import { Badge } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-
+import { Card, Badge } from "react-bootstrap";
+import CommentArea from "../components/CommentArea.jsx";
 class SingleBook extends Component {
   state = {
-    searchQuery: "",
+    clicked: false,
   };
-
+  changeStatus = (e) => {
+    if (this.state.clicked === false) {
+      this.setState({ clicked: true });
+      // console.log(this.props.books.asin);
+    } else {
+      this.setState({ clicked: false });
+    }
+  };
   render() {
     return (
       <>
-        <div>
-          <>
-            <InputGroup>
-              <InputGroup.Text id="inputGroup-sizing-default">
-                Search!
-              </InputGroup.Text>
-              <Form.Control
-                aria-label="Search"
-                aria-describedby="inputGroup-sizing-default"
-                placeholder="Search for Books"
-                onChange={(e) => this.setState({ searchQuery: e.target.value })}
-              />
-            </InputGroup>
-            <br />
-          </>
-        </div>
-        <Row className="row" xs={1} md={3}>
-          {fantasy
-            .filter((book) =>
-              book.title.toLowerCase().includes(this.state.searchQuery)
-            )
-            .map((book) => (
-              <Col className="mb-3 mt-2">
-                <Card id="custom_background" key={book.asin}>
-                  <Card.Img
-                    variant="top"
-                    className="ratio p-1"
-                    src={book.img}
-                  />
-                  <Card.Body>
-                    <Card.Title className="text-truncate">
-                      {book.title}
-                    </Card.Title>
-
-                    <div className="d-flex justify-content-center">
-                      <Badge
-                        variant="success p-2"
-                        class="badge"
-                        onclick="selected_item()"
-                      >
-                        Buy only for {book.price}$
-                      </Badge>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-        </Row>
+        <Card
+          id="custom_background"
+          style={{
+            border: this.state.selectedHorror ? "3px solid violet" : "",
+          }}
+          key={this.props.books.asin}
+        >
+          <Card.Img
+            variant="top"
+            className="ratio p-1"
+            src={this.props.books.img}
+            onClick={this.changeStatus}
+          />
+          <Card.Body>
+            <Card.Title className="text-truncate">
+              {this.props.books.title}
+            </Card.Title>
+            <Card.Text>
+              <div id="popup">
+                {this.state.clicked && (
+                  <CommentArea bookID={this.props.books.asin} />
+                )}
+              </div>
+            </Card.Text>
+            <div className="d-flex justify-content-center">
+              <Badge variant="success p-2" class="badge">
+                Buy only for {this.props.books.price}$
+              </Badge>
+            </div>
+          </Card.Body>
+        </Card>
       </>
     );
   }
