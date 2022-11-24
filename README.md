@@ -3,6 +3,7 @@
 <ul>
 <li>Responsive Design</li>
 <li>On-click comments sections for every book (Epicode's API)</li>
+<li>Search Bar</li>
 <li>Beautiful & Fast</li>
 </ul>
 
