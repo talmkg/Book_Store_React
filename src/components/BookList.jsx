@@ -4,10 +4,14 @@ import fantasy from "../Assets/fantasy.json";
 import SingleBook from "../components/SingleBook";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import CommentArea from "./CommentArea";
 
 class BookList extends Component {
   state = {
     searchQuery: "",
+  };
+  changeSelectedBook = (newBook) => {
+    this.setState({ asin: newBook });
   };
 
   render() {
@@ -29,17 +33,26 @@ class BookList extends Component {
             <br />
           </>
         </div>
-        <Row className="row" xs={1} md={3}>
-          {fantasy
-            .filter((book) =>
-              book.title.toLowerCase().includes(this.state.searchQuery)
-            )
-            .map((book) => (
-              <Col className="mb-3 mt-2" key={book.asin}>
-                <SingleBook books={book} />
-              </Col>
-            ))}
-        </Row>
+        <Col>
+          <Row className="row" xs={1} md={3}>
+            {fantasy
+              .filter((book) =>
+                book.title.toLowerCase().includes(this.state.searchQuery)
+              )
+              .slice(0, 3)
+              .map((book) => (
+                <Col className="mb-3 mt-2" key={book.asin}>
+                  <SingleBook
+                    changeSelectedBook={this.changeSelectedBook}
+                    books={book}
+                  />
+                </Col>
+              ))}
+          </Row>
+        </Col>
+        <Col>
+          <CommentArea changeSelectedBook={this.state.asin} />
+        </Col>
       </>
     );
   }

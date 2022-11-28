@@ -1,15 +1,19 @@
 import { Component } from "react";
 import CommentList from "../components/CommentList.jsx";
 import AddComment from "../components/AddComment.jsx";
+import { Button, Card } from "react-bootstrap";
 
 class CommentArea extends Component {
+  //f(x) to get "comments" by using bookId end point since we dont want all comments on the server
+  // I got the book ID as a prop from the 'SingleBook.jsx' component
   state = {
     comments: [],
   };
-
-  //f(x) to get "comments" by using bookId end point since we dont want all comments on the server
-  // I got the book ID as a prop from the 'SingleBook.jsx' component
-
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.changeSelectedBook !== this.props.changeSelectedBook) {
+      this.getBooks();
+    }
+  };
   getBooks = async () => {
     const options = {
       headers: {
@@ -20,7 +24,7 @@ class CommentArea extends Component {
 
     let response = await fetch(
       "https://striveschool-api.herokuapp.com/api/comments/" +
-        this.props.bookID,
+        this.props.changeSelectedBook,
       options
     );
 
@@ -43,22 +47,37 @@ class CommentArea extends Component {
 
   render() {
     return (
-      <div style={{ color: "black" }}>
-        <div className="comment-area" type="text">
-          {this.state.comments.map(
-            (
-              comment //now we have an array of comments from fetch, we map trough it,
-            ) => (
-              // as we map we send each comment object to CommentList.jsx as a prop (line 50)
-              // and send the book Id as a prop in AddComment.jsx component(line 55)
-              <CommentList comments={comment} />
-            )
-          )}
-        </div>
+      <>
         <div>
-          <AddComment bookID={this.props.bookID} />
+          <div className="comment-area" type="text">
+            {!this.state.comments ? (
+              <h1>Choose the book first</h1>
+            ) : (
+              this.state.comments.map((com) => (
+                <Card
+                  className="card d-flex m-2 p-2 text-dark"
+                  id="custom_background"
+                >
+                  <div className="">
+                    <h5>User: {com.author} </h5>
+                    <p>Comment: {com.comment}</p>
+                    <p>Mark: {com.rate} stars of 5 ⭐</p>
+                  </div>
+                  <div>
+                    <Button
+                      variant="danger"
+                      className="m-1"
+                      onClick={(e) => this.deleteComment(com._id)}
+                    >
+                      Report
+                    </Button>
+                  </div>
+                </Card>
+              ))
+            )}
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

@@ -4,6 +4,7 @@ import CommentArea from "../components/CommentArea.jsx";
 class SingleBook extends Component {
   state = {
     clicked: false,
+    asin: "",
   };
   changeStatus = (e) => {
     if (this.state.clicked === false) {
@@ -18,9 +19,7 @@ class SingleBook extends Component {
       <>
         <Card
           id="custom_background"
-          style={{
-            border: this.state.selectedHorror ? "3px solid violet" : "",
-          }}
+          onClick={(e) => this.props.changeSelectedBook(this.props.books.asin)}
           key={this.props.books.asin}
         >
           <Card.Img

@@ -3,6 +3,7 @@
   background-image: url(https://images5.alphacoders.com/110/1107810.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   z-index: 1;
 }
 .ratio {
@@ -45,4 +46,7 @@
 }
 #popup {
   z-index: 2;
+}
+#Container {
+  padding-bottom: 2rem;
 }
